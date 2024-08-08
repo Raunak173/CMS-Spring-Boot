@@ -35,4 +35,19 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDao.updateCustomer(customer);
 	}
 
+	@Override
+	public String deleteCustomer(int id) {
+		return customerDao.deleteCustomerById(id);
+	}
+
+	@Override
+	public String insertMultipleCustomers(List<Customer> customers) {
+		return customerDao.insertMultipleCustomers(customers);
+	}
+
+	@Override
+	public List<Customer> getCustomerByFirstName(String firstName) {
+		return customerDao.getCustomersByFirstName(firstName);
+	}
+
 }

@@ -3,6 +3,7 @@ package com.CustomerRelationship.CustomerRelationshipManagement.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,8 +38,24 @@ public class CustomerController {
 	}
 	
 	@PutMapping("/update")
-		public String customerUpdate(@RequestBody Customer customer) {
-			return customerService.updateCustomer(customer);
-		}
+	public String customerUpdate(@RequestBody Customer customer) {
+		return customerService.updateCustomer(customer);
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public String deleteCustomer(@PathVariable int id) {
+		return customerService.deleteCustomer(id);
+	}
+	
+	@PostMapping("/insert/multiple")
+	public String insertMultipleCustomers(@RequestBody List<Customer> customers) {
+		return customerService.insertMultipleCustomers(customers);
+	}
+	
+	@GetMapping("/byName/{firstName}")
+	public List<Customer> getCustomersbyFirstName(@PathVariable String firstName){
+		return customerService.getCustomerByFirstName(firstName);
+	}
+	
 
 }
